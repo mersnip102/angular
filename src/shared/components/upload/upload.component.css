@@ -1,0 +1,130 @@
+  .hoverable {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+    border: 2px solid #000;
+    margin-top: 10px;
+    margin-bottom: auto;
+    border-radius: 50%;
+  }
+
+  .hover-text {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+  }
+
+  .hoverable .background {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .hoverable:hover .hover-text {
+    display: block;
+  }
+
+  .hoverable:hover .background {
+    display: block;
+  }
+
+  #fileInput {
+    display: none;
+  }
+
+  body {
+    background: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .avatar-upload {
+    position: relative;
+    max-width: 130px;
+  }
+
+  .avatar-upload .avatar-edit {
+    position: absolute;
+    right: 37px;
+    z-index: 1;
+    top: 5px;
+    border-radius: 50%;
+  }
+
+  .avatar-upload .avatar-edit input {
+    display: none;
+  }
+
+  .avatar-upload .avatar-edit input+label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #e60909;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all .2s ease-in-out;
+    border: 1px solid black;
+  }
+
+  .avatar-upload .avatar-edit input+label:hover {
+    border-color: #d6d6d6;
+  }
+
+  .avatar-upload .avatar-edit ::after {
+    content: "\f00d";
+    font-family: 'FontAwesome';
+    color: #757575;
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+  }
+
+  .hoverable .background {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  .btn_delete button {
+    border: 0;
+    position: absolute;
+    top: -8px;
+    right: 40px;
+    background: transparent;
+  }
+
+  .btn_delete button i {
+    color: rgb(231, 27, 27);
+    background: white;
+  }

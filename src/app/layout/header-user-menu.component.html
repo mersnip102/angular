@@ -1,0 +1,16 @@
+<li class="nav-item dropdown nav-user-menu" dropdown>
+    <a href="javascript:;" class="nav-link" dropdownToggle>
+        <img class="user-image img-circle elevation-2" src="{{avatar}}" alt="User Image" />
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+        <a class="dropdown-item" [routerLink]="['userinfor']">
+            <i class="fas fa-user-edit"></i> Cập nhật thông tin
+        </a>
+        <a class="dropdown-item" [routerLink]="['update-password']">
+            <i class="fas fa-key"></i> {{ "Cập nhật mật khẩu" | localize }}
+        </a>
+        <a class="dropdown-item" href="javascript:;" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i> {{ "Đăng xuất" | localize }}
+        </a>
+    </div>
+</li>

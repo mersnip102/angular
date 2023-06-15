@@ -1,0 +1,40 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="text-center" scope="col" rowspan="3">STT</th>
+            <th class="text-center" scope="col" rowspan="3">Tên đơn vị</th>
+            <th class="text-center" scope="col" colspan="8">{{organizationLevel}}</th>
+        </tr>
+        <tr>
+            <th class="text-center" scope="col" colspan="3">Vốn được giao</th>
+            <th class="text-center" scope="col" colspan="3">Vốn đã phân bổ</th>
+
+            <th class="text-center" scope="col" rowspan="2">Số còn lại chưa phân bổ</th>
+            <th class="text-center" scope="col" rowspan="2">Tỷ lệ phần trăm</th>
+        </tr>
+        <tr>
+            <th class="text-center" scope="col">Trong kỳ</th>
+            <th class="text-center" scope="col">Lũy kế từ đầu năm</th>
+            <th class="text-center" scope="col">Lũy kế từ đầu chương trình</th>
+            <th class="text-center" scope="col">Trong kỳ</th>
+            <th class="text-center" scope="col">Lũy kế từ đầu năm</th>
+            <th class="text-center" scope="col">Lũy kế từ đầu chương trình</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of csdl1Items; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{item.organization}}</td>
+            <td>{{item.assignedPeriod}}</td>
+            <td>{{item.assignedAccumulatedYTD}}</td>
+            <td>{{item.assignedAccumulatedSTD}}</td>
+            <td>{{item.allottedPeriod}}</td>
+            <td>{{item.allottedAccumulatedYTD}}</td>
+            <td>{{item.allottedAccumulatedSTD}}</td>
+            <td>{{item.unallotted}}</td>
+            <td>{{item.percentage}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

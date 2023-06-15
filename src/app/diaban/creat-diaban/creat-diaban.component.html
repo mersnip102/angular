@@ -1,0 +1,67 @@
+<form class="form-horizontal" autocomplete="off" #createUserModal="ngForm" (ngSubmit)="save()">
+    <abp-modal-header [title]="'Thêm mới' | localize" (onCloseClick)="bsModalRef.hide()"></abp-modal-header>
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="tinh">
+                Tỉnh/thành phố
+            </label>
+            <div class="col-md-9">
+                    <div class="titleDoiTuong">
+                        <select name="tinh" id="tinh" class="form-control input-sm"
+                            [(ngModel)]="SelectedTinh" (ngModelChange)="ChangeTinh($event)">
+                            <option value="0">--Chọn tỉnh/thành phố--</option>
+                            <option *ngFor="let item of tinh" [value]="item.ma_dvhc_t">
+                                {{ item.ten_dvhc_t }}
+                            </option>
+                        </select>
+                        <div class="text-danger" *ngIf="isTinhSelect">
+                            Chưa chọn tỉnh/thành phố!
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="tinh">
+                Huyện
+            </label>
+            <div class="col-md-9">
+                    <div class="titleDoiTuong">
+                        <select name="huyen" id="huyen" class="form-control input-sm"
+                            [(ngModel)]="SelectedHuyen" (ngModelChange)="ChangeHuyen($event)">
+                            <option value="0">--Chọn huyện--</option>
+                            <option *ngFor="let item of huyen" [value]="item.ma_dvhc_h">
+                                {{ item.ten_dvhc_h }}
+                            </option>
+                        </select>
+                    </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="tinh">
+                Xã
+            </label>
+            <div class="col-md-9">
+                    <div class="titleDoiTuong">
+                        <select name="xa" id="xa" class="form-control input-sm"
+                            [(ngModel)]="SelectedXa">
+                            <option value="0">--Chọn xã--</option>
+                            <option *ngFor="let item of xa" [value]="item.ma_dvhc_x">
+                                {{ item.ten_dvhc_x }}
+                            </option>
+                        </select>
+                    </div>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="tendiaban">
+                Tên địa bàn
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="tendiaban" id="tendiaban" required
+                    [(ngModel)]="diaban.tenDiaBan" #diabanModel="ngModel" #diabanEl />
+                <abp-validation-summary [control]="diabanModel" [controlEl]="diabanEl"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <abp-modal-footer (onCancelClick)="bsModalRef.hide()"></abp-modal-footer>
+</form>

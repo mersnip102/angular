@@ -1,0 +1,27 @@
+.chitiet-image {
+    list-style: none;
+    padding: 0;
+}
+
+.chitiet-image li {
+    float: left;
+    margin-right: 15px;
+}
+
+.chitiet-file li {
+    float: none !important;
+}
+
+.chitiet-image img {
+    max-width: 150px;
+}
+
+.chitiet-image video {
+    width: 150px;
+    height: 150px;
+}
+
+.map-container {
+    display: block;
+    height: 400px;
+}

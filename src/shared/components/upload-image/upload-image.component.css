@@ -1,0 +1,31 @@
+.trash {
+    padding-left: 5px;
+}
+
+.box-upload {
+    width: 100px;
+    height: 100px;
+    border: 1px dashed #ccc;
+    background: #fff;
+    border-radius: 7px;
+    align-items: center;
+    position: relative;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    display: block;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.box-upload img {
+    height: 100%;
+    width: 100%;
+}
+
+.box-upload a {
+    position: absolute;
+    top: -11px;
+    right: -4px;
+    color: red;
+}

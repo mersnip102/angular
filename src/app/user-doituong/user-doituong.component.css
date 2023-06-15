@@ -1,0 +1,20 @@
+.user {
+    border: solid 1px #ccc;
+    padding: 10px;
+}
+
+.titleDoiTuong {
+    font-weight: 700;
+}
+
+.user a {
+    color: #000;
+}
+
+.doituong {
+    align-items: center;
+}
+
+.dt-active {
+    text-align: center;
+}

@@ -1,0 +1,205 @@
+<form class="form-horizontal" autocomplete="off" #createUserModal="ngForm">
+    <!-- <abp-modal-header [title]="'Thông tin báo cáo' | localize"></abp-modal-header> -->
+    <div class="card">
+        <div class="card-header">
+            <h4>Thông tin báo cáo</h4>
+        </div>
+        <div class="card-body">
+
+            <div class="form-group row ">
+                <label class="col-md-2 col-form-label" for="title">
+                    {{ "Tiêu đề" | localize }}
+                </label>
+                <div class="col-md-9">
+                    {{pakn.title}}
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-md-2 col-form-label" for="content">
+                    {{ "Nội dung" | localize }}
+                </label>
+                <div class="col-md-9" [innerHtml]="pakn.content">
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label class="col-md-2 col-form-label" for="kiennghi">
+                    {{ "Kiến nghị" | localize }}
+                </label>
+                <div class="col-md-9">
+                    {{pakn.kienNghi}}
+                </div>
+            </div>
+            <div class="form-group row ">
+
+                <label class="col-md-2 col-form-label">
+                    {{"Loại báo cáo" | localize}}
+                </label>
+                <div class="col-md-4">
+                    {{orgSelectedLoaiBaoCao}}
+                </div>
+
+                <label class="col-md-2 col-form-label">
+                    {{"Loại vụ việc" | localize}}
+                </label>
+                <div class="col-md-4">
+                    {{orgSelectedSuKien}}
+                </div>
+
+            </div>
+            <div class="form-group row ">
+                <label class="col-md-2 col-form-label">
+                    {{"Đối tượng" | localize}}
+                </label>
+                <div class="col-md-9">
+                    {{orgSelected}}
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label class="col-md-2 col-form-label">
+                    {{"Đơn vị chủ trì" | localize}}
+                </label>
+                <div class="col-md-4">
+                    {{orgSelectedDonViChuTri}}
+
+                </div>
+
+                <label class="col-md-2 col-form-label">
+                    {{"Đơn vị liên quan" | localize}}
+                </label>
+                <div class="col-md-4">
+
+                    {{orgSelectToChuc}}
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-md-2 col-form-label">
+                    {{"Tỉnh" | localize}}
+                </label>
+                <div class="col-md-2">
+
+                    {{tentinh}}
+                </div>
+                <label class="col-md-2 col-form-label">
+                    {{"Huyện" | localize}}
+                </label>
+                <div class="col-md-2">
+
+                    {{tenhuyen}}
+                </div>
+                <label class="col-md-2 col-form-label">
+                    {{"Xã" | localize}}
+                </label>
+                <div class="col-md-2">
+
+                    {{tenxa}}
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label class="col-md-2 col-form-label">
+                    {{"Địa chỉ" | localize}}
+                </label>
+                <div class="col-md-4">
+                    {{pakn.diaChi}}
+
+                </div>
+
+
+            </div>
+            <div class="form-group row" *ngIf="pakn.images!=undefined && pakn.images.length>0">
+                <label class="col-md-2 col-form-label">
+                    Hình ảnh
+                </label>
+                <div class="col-md-9">
+                    <ul class="chitiet-image">
+                        <ng-container *ngFor="let item of pakn.images">
+                            <li>
+                                <img src="{{createImgPath(item.url)}}" alt="">
+                            </li>
+                        </ng-container>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">
+                    Video
+                </label>
+                <div class="col-md-9">
+                    <ul class="chitiet-image" *ngIf="pakn.medias!=undefined && pakn.medias.length>0">
+                        <ng-container *ngFor="let item of pakn.medias">
+                            <li>
+                                <video controls>
+                                    <source src="{{createImgPath(item.url)}}" type="video/mp4">
+                                    <source src="{{createImgPath(item.url)}}" type="video/ogg">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </li>
+                        </ng-container>
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">
+                    File
+                </label>
+                <div class="col-md-9" *ngIf="pakn.files!=undefined && pakn.files.length>0">
+                    <ul class="chitiet-image chitiet-file">
+                        <ng-container *ngFor="let item of pakn.files">
+                            <li>
+                                <a href="{{createImgPath(item.url)}}" download>{{SplitFile(item.url)}}</a>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <label class="col-md-2 col-form-label">
+                    {{"Trạng thái" | localize}}
+                </label>
+                <div class="col-md-9">
+                    {{orgSelectedState}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-lable">Vị trí</label>
+                <div class="col-md-9">
+                    <div id="ol-map" class="map-container"></div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">
+
+                </label>
+                <div class="col-sm-4" *ngIf="this.guibaocao == false">
+                    <a *ngIf="this.burl =='searchpakns'" routerLink="/app/{{burl}}" class="btn btn-primary btn-sm"
+                        style="width:100px; margin-left: 10px !important;">
+                        Quay lại
+                    </a>
+                    <a *ngIf="this.burl ==undefined" routerLink="/app/duyetbaocaos" class="btn btn-primary btn-sm"
+                        style="width:100px; margin-left: 10px !important;">
+                        Quay lại
+                    </a>
+                </div>
+                <div class="col-sm-4" *ngIf="this.guibaocao == true">
+                    <a *ngIf="this.burl=='searchpakns'" routerLink="/app/{{burl}}" class="btn btn-primary btn-sm"
+                        style="width:100px; margin-left: 10px !important;">
+                        Quay lại
+                    </a>
+                    <a *ngIf="this.burl== 'pakns'" routerLink="/app/pakns" class="btn btn-primary btn-sm"
+                        style="width:100px; margin-left: 10px !important;">
+                        Quay lại
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</form>

@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <!-- <app-header></app-header> -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <header-left-navbar></header-left-navbar>
+        <ul class="navbar-nav ml-auto">
+            <headernotify></headernotify>
+            <header-language-menu></header-language-menu>
+            <header-user-menu></header-user-menu>
+            <headerthongbao></headerthongbao>
+
+        </ul>
+    </nav>
+<!--    <sidebar></sidebar>-->
+    <div class="content-wrapper">
+        <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+<!--    <div id="sidebar-overlay" (click)="toggleSidebar()"></div>-->
+</div>

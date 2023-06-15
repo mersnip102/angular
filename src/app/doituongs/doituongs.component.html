@@ -1,0 +1,102 @@
+<div>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <h1>{{"Quản lý đối tượng"|localize}}</h1>
+                </div>
+                <div class="col-6 text-right">
+                    <a href="javascript:;" class="btn btn-sm bg-blue" (click)="create()">
+                        <i class="fa fa-plus-square"></i> {{ "Create" | localize }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content px-2">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">&emsp;</div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-sm bg-blue" (click)="getDataPage(1)">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control" name="keyword" [placeholder]="'SearchWithThreeDot' | localize" [(ngModel)]="keyword" (keyup.enter)="getDataPage(1)" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" [busy]="isTableLoading">
+                            <thead class="bg-light">
+                                <tr class="text-center">
+                                    <th>STT</th>
+                                    <th>{{"Mã số"|localize }}</th>
+                                    <th>{{"Tên đối tượng"|localize }}</th>
+                                    <th>{{"Address"|localize}}</th>
+                                    <th>{{"Người đại diện"|localize}}</th>
+                                    <th>{{"Đơn vị quản lý"|localize }}</th>
+                                    <th>{{"Trạng thái"|localize }}</th>
+                                    <th>{{"Thao tác"|localize }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let doituong of doituongs | paginate: {
+                                    id: 'server',
+                                    itemsPerPage: pageSize,
+                                    currentPage: pageNumber,
+                                    totalItems: totalItems
+                                    };let i=index;">
+                                    <td class="text-center">{{i+1}}</td>
+                                    <td>{{ doituong.code }}</td>
+                                    <td>{{ doituong.name }}</td>
+                                    <td>{{ doituong.address }}</td>
+                                    <td>{{ doituong.tenNguoiDaiDien }}</td>
+                                    <td>{{ doituong.tenToChuc }}</td>
+                                    <td class="text-center">
+                                        <span style="color:#007bff" *ngIf="doituong.ngayKetThuc > Dday|| doituong.ngayKetThuc==null">Còn hạn</span>
+                                        <span style="color:#bd2130" *ngIf="doituong.ngayKetThuc < Dday">Hết hạn</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-sm bg-secondary" (click)="edit(doituong)">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            {{ "Edit" | localize }}
+                                        </button>
+                                        <button type="button" class="btn btn-sm bg-danger mx-2" (click)="delete(doituong)">
+                                            <i class="fas fa-trash"></i>
+                                            {{ "Delete" | localize }}
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer table-card-footer bg-light border-top">
+                    <div class="row">
+                        <div class="col-sm-4 col-12">
+                            <p class="mb-0 my-2">
+                                {{ "TotalRecordsCount" | localize: totalItems }}
+                            </p>
+                        </div>
+                        <div class="col-sm-8 col-12">
+                            <div class="float-sm-right m-auto">
+                                <abp-pagination-controls id="server" (pageChange)="getDataPage($event)">
+                                </abp-pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,123 @@
+<form class="form-horizontal" autocomplete="off" #createUserModal="ngForm">
+    <abp-modal-header (onCloseClick)="bsModalRef.hide()"></abp-modal-header>
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="code">
+                Mã tổ chức
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="code" id="code" required [(ngModel)]="org.orgCode"
+                    (ngModelChange)="org.orgCode = $event.toUpperCase()" pattern="^([a-zA-Z0-9]+)$" #codeModel="ngModel"
+                    #codeEl />
+                <abp-validation-summary [control]="codeModel" [controlEl]="codeEl"></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="name">
+                <!-- {{ "Name" | localize }} -->
+                Tên tổ chức
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="name" id="name" required [(ngModel)]="org.displayName"
+                    #nameModel="ngModel" #nameEl />
+                <abp-validation-summary [control]="nameModel" [controlEl]="nameEl"></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="surname">
+                <!-- {{ "Surname" | localize }} -->
+                Chọn tổ chức cha
+            </label>
+            <div class="col-md-9">
+                <ng-select2 width="100%" [data]="datas" [(ngModel)]="selectedOrg" name="parentId" id="parentId"
+                    #parentModel="ngModel" [placeholder]="'Chọn tổ chức'"></ng-select2>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="tinh">
+                Tỉnh/thành phố
+            </label>
+            <div class="col-md-9">
+                    <div class="titleDoiTuong">
+                        <select name="tinh" id="tinh" class="form-control input-sm"
+                            [(ngModel)]="SelectedTinh" (ngModelChange)="ChangeTinh($event)">
+                            <option value="0">--Chọn tỉnh/thành phố--</option>
+                            <option *ngFor="let item of tinh" [value]="item.ma_dvhc_t">
+                                {{ item.ten_dvhc_t }}
+                            </option>
+                        </select>
+                        <div class="text-danger" *ngIf="isTinhSelect">
+                            Chưa chọn tỉnh/thành phố!
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="huyen">
+                Huyện
+            </label>
+            <div class="col-md-9">
+                    <div class="titleDoiTuong">
+                        <select name="huyen" id="huyen" class="form-control input-sm"
+                            [(ngModel)]="SelectedHuyen" (ngModelChange)="ChangeHuyen($event)">
+                            <option value="0">--Chọn huyện--</option>
+                            <option *ngFor="let item of huyen" [value]="item.ma_dvhc_h">
+                                {{ item.ten_dvhc_h }}
+                            </option>
+                        </select>
+                    </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="xa">
+                Xã
+            </label>
+            <div class="col-md-9">
+                    <div class="titleDoiTuong">
+                        <select name="xa" id="xa" class="form-control input-sm" (change)="ChangeXa()"
+                            [(ngModel)]="SelectedXa">
+                            <option value="0">--Chọn xã--</option>
+                            <option *ngFor="let item of xa" [value]="item.ma_dvhc_x">
+                                {{ item.ten_dvhc_x }}
+                            </option>
+                        </select>
+                    </div>
+            </div>
+        </div>
+        <!-- <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="diaban">
+                Địa bàn
+            </label>
+            <div class="col-md-9">
+                <select name="diaban" id="diaban" [(ngModel)]="org.diaBanId" class="form-control">
+                    <option value="0">--Chọn địa bàn--</option>
+                    <option *ngFor="let item of diaban" value="{{ item.id }}">
+                        {{ item.tenDiaBan }}
+                    </option>
+                </select>
+            </div>
+        </div> -->
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="address">
+                Địa chỉ
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="address" id="address" [(ngModel)]="org.address"
+                    #addressModel="ngModel" #addressEl />
+            </div>
+        </div>
+    </div>
+    <!-- <abp-modal-footer [cancelDisabled]="saving" [saveDisabled]="!createUserModal.form.valid || saving" (onCancelClick)="bsModalRef.hide()"></abp-modal-footer> -->
+    <div class="modal-footer" style="display:block !important ;">
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-default" (click)="bsModalRef.hide()">Bỏ qua</button>
+                <button *ngIf="isChange" class="btn btn-default" style="margin-left:5px ;"
+                    (click)="removeOrganization()">Xóa</button>
+            </div>
+            <div class="col-md-6 text-right">
+                <button class="btn btn-primary" (click)="save()">Lưu</button>
+            </div>
+        </div>
+    </div>
+</form>

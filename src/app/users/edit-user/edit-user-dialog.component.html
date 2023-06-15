@@ -1,0 +1,136 @@
+﻿<form class="form-horizontal" autocomplete="off" #editUserModal="ngForm" (ngSubmit)="save()">
+    <abp-modal-header [title]="'Cập nhật thông tin' | localize" (onCloseClick)="bsModalRef.hide()"></abp-modal-header>
+    <div class="modal-body">
+        <tabset>
+            <tab [heading]="'Thông tin chi tiết' | localize" class="pt-3 px-2">
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">
+                        {{ "Tổ chức" | localize }}
+                    </label>
+                    <div class="col-md-10">
+                        <ng-select2 width="100%" [data]="datas" [options]="options" [(ngModel)]="orgSelected" name="parentId" id="parentId" #parentModel="ngModel" [placeholder]="'Chọn đơn vị quản lý'">
+                        </ng-select2>
+                    </div>
+                </div>
+                <div class="form-group row required">
+                    <label class="col-md-2 col-form-label" for="name">
+                        {{ "Tên" | localize }}
+                    </label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="name" id="name" required maxlength="32" [(ngModel)]="user.name" #nameModel="ngModel" #nameEl />
+                        <abp-validation-summary [control]="nameModel" [controlEl]="nameEl"></abp-validation-summary>
+                    </div>
+
+                    <label class="col-md-2 col-form-label" for="surname">
+                        {{ "Họ" | localize }}
+                    </label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" name="surname" id="surname" required maxlength="32" [(ngModel)]="user.surname" #surnameModel="ngModel" #surnameEl />
+                        <abp-validation-summary [control]="surnameModel" [controlEl]="surnameEl">
+                        </abp-validation-summary>
+                    </div>
+                </div>
+
+                <div class="form-group row required">
+                    <label class="col-md-2 col-form-label" for="userName">
+                        {{ "UserName" | localize }}
+                    </label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" disabled name="userName" id="userName" required minlength="2" maxlength="32" [(ngModel)]="user.userName" #userNameModel="ngModel" #userNameEl />
+                        <abp-validation-summary [control]="userNameModel" [controlEl]="userNameEl">
+                        </abp-validation-summary>
+                    </div>
+                </div>
+                <div class="form-group row required">
+                    <label class="col-md-2 col-form-label" for="emailAddress">
+                        {{ "EmailAddress" | localize }}
+                    </label>
+                    <div class="col-md-4">
+                        <input type="email" class="form-control" name="emailAddress" id="emailAddress" required maxlength="256" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$" [(ngModel)]="user.emailAddress" #emailAddressModel="ngModel" #emailAddressEl />
+                        <abp-validation-summary [control]="emailAddressModel" [controlEl]="emailAddressEl">
+                        </abp-validation-summary>
+                    </div>
+
+                    <label class="col-md-2 col-form-label" for="phoneNumber">
+                        {{ "Số điện thoại" | localize }}
+                    </label>
+                    <div class="col-md-4">
+                        <input type="phone" class="form-control" name="phoneNumber" id="phoneNumber" maxlength="10" required pattern="([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b" [(ngModel)]="user.phoneNumber" #phoneNumberModel="ngModel" #phoneNumberEl />
+                        <div class="text-danger" *ngIf="phoneNumberModel.errors?.['pattern']">
+                            Sai số điện thoại
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">
+                        {{ "Chức danh" | localize }}
+                    </label>
+                    <div class="col-md-4">
+                        <ng-select2 width="100%" [data]="data_chucDanh" [(ngModel)]="chucDanhSelected" name="chucDanh" id="chucDanh" #chucDanhModel="ngModel" [placeholder]="'Chọn chức danh'"></ng-select2>
+                    </div>
+
+                    <label class="col-md-2 col-form-label">
+                        {{ "IsActive" | localize }}
+                    </label>
+                    <div class="col-md-4">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" name="isActive" id="isActive" [(ngModel)]="user.isActive" />
+                            <label class="custom-control-label mt-2" for="isActive"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label">
+                        {{ "Địa chỉ" | localize }}
+                    </label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="address" #addressModel="ngModel" #addressEl id="address" [(ngModel)]="user.address" />
+                    </div>
+                </div>
+                <div class="from-group row">
+                    <label class="col-md-2 col-form-label">
+                        Ngày cấp tài khoản
+                    </label>
+                    <div class="col-md-4">
+                        <!-- <input class="form-control" [valueAsDate]="ngayCap" (change)="updateDateNgayCap($event)"
+                            max="3000-01-01" type="date" id="ngaycap" /> -->
+                        <my-date-picker name="mydate" [options]="myDatePickerOptions" [selDate]="selDate" (change)="onChange($event)" (dateChanged)="onDateChanged($event)">
+                        </my-date-picker>
+                    </div>
+                    <label class="col-md-2 col-form-label">
+                        Ngày hết hiệu lực
+                    </label>
+                    <div class="col-md-4">
+                        <!-- <input class="form-control" [valueAsDate]="ngayHetHan" max="3000-01-01"
+                            (change)="updateDateNgayHetHan($event)" type="date" id="ngayhethan" /> -->
+                        <my-date-picker name="mydate" [options]="myDatePickerOptions" [selDate]="endselDate" (change)="onChangeEndDay($event)" (dateChanged)="onDateChangedEndDay($event)">
+                        </my-date-picker>
+                    </div>
+                </div>
+                <!-- <div class="form-group row mb-0">
+            <label class="col-md-2 col-form-label">
+                {{ "Ảnh đại diện" | localize }}
+            </label>
+            <div class="col-md-10">
+                <app-upload [item]="avatar" (onUploadFinished)="uploadFinished($event)"></app-upload>
+            </div>
+        </div> -->
+            </tab>
+            <tab [heading]="'Chọn nhóm chức năng' | localize" class="pt-3 px-2">
+                <div class="form-group row mb-0">
+                    <ng-container *ngFor="let role of roles; let i = index">
+                        <div class="col-md-6">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" [id]="'role_' + i" [checked]="isRoleChecked(role.normalizedName)" (change)="onRoleChange(role, $event)" />
+                                <label class="custom-control-label" [for]="'role_' + i">
+                                    {{ role.name }}
+                                </label>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+    <abp-modal-footer [cancelDisabled]="saving" [saveDisabled]="!editUserModal.form.valid || saving" (onCancelClick)="bsModalRef.hide()"></abp-modal-footer>
+</form>

@@ -1,0 +1,17 @@
+<form class="form-horizontal" autocomplete="off" #createUserModal="ngForm" (ngSubmit)="save()">
+    <abp-modal-header [title]="'Thêm mới' | localize" (onCloseClick)="bsModalRef.hide()"></abp-modal-header>
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="tenloaidoituong">
+                {{ "Tên loại đối tượng" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="tenloaidoituong" id="tenloaidoituong" required
+                    [(ngModel)]="loaidt.tenLoaiDoiTuong" #loaidtModel="ngModel" #loaidtEl />
+                <abp-validation-summary [control]="loaidtModel" [controlEl]="loaidtEl"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <abp-modal-footer [cancelDisabled]="saving" [saveDisabled]="!createUserModal.form.valid || saving"
+        (onCancelClick)="bsModalRef.hide()"></abp-modal-footer>
+</form>

@@ -1,0 +1,24 @@
+<div class="row" style="margin-bottom:15px;">
+    <div class="col-md-2">
+        <input type="file" #file placeholder="Choose file" accept="video/mp4,video/x-m4v,video/*" (change)="uploadFile(file.files)" style="display:none;" multiple>
+        <button type="button" class="btn btn-success btn-sm" (click)="file.click()">Upload video</button>
+    </div>
+    <div class="col-md-10">
+        <ng-container *ngIf="res !=null||fileItems.length>0">
+            <ng-container *ngFor="let item of fileItems;let i=index">
+                <div id="{{i}}" class="box-upload">
+                    <!-- Tên file: {{item.pathFile}} - Kích thước: {{item.fileSize}} -->
+                    <!-- <img src="{{createImgPath(item.pathFile)}}" /> -->
+                    <video controls>
+                        <source src="{{createImgPath(item.pathFile)}}" type="video/mp4">
+                        <source src="{{createImgPath(item.pathFile)}}" type="video/ogg">
+                            Your browser does not support the video tag.
+                      </video>
+                    <a (click)="deleteFile(item)" href="javascript:void(0)"> <span class="trash"> <i  class="fa fa-times btn-danger-color red"></i></span></a>
+                </div>
+            </ng-container>
+
+        </ng-container>
+
+    </div>
+</div>

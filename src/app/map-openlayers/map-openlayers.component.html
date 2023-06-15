@@ -1,0 +1,223 @@
+<main>
+    <div class="row" style="display: contents">
+        <div class="col-sm-12">
+            <div id="ol-map" (mousedown)="onMouseDown($event)" (click)="onClick($event)" class="map-container"></div>
+            <!--bỏ ra ngoài ol-map cho đỡ ảnh hưởng. Nếu thế này thì lại sử dụng component map được-->
+            <div class="search-area">
+                <div style="height: 500px">
+                    <a (click)="collapse.toggle()" [attr.aria-expanded]="!isSeachCollapsed"
+                        aria-controls="collapseExample" class="search-area-toggle">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                    <div #collapse="ngbCollapse" [(ngbCollapse)]="isSeachCollapsed" style="max-width: 500px">
+                        <div class="card" style="width: 500px;margin-top: 3px;">
+                            <div class="card-body" style="padding:10px; max-height: 500px; overflow-y: auto">
+                                <div>
+                                    <section>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h5>Tra cứu thông tin báo cáo</h5>
+                                            </div>
+                                        </div>
+
+                                    </section>
+                                    <section>
+                                        <div class="row form-group">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend"></div>
+                                                    <input type="text" class="form-control input-sm" name="keyword"
+                                                        [placeholder]="'SearchWithThreeDot' | localize"
+                                                        [(ngModel)]="keyword" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select name="org" id="org" class="form-control input-sm"
+                                                    [(ngModel)]="ddlToChucSelected"
+                                                    (ngModelChange)="ChangeOrgToChuc($event)">
+                                                    <option value="0">--Chọn tổ chức--</option>
+                                                    <option *ngFor="let item of ddlToChuc" value="{{ item.id }}">
+                                                        {{ item.name }}
+                                                    </option>
+                                                </select>
+                                                <!-- <ng-select2 width="100%" [data]="datas" [(ngModel)]="selectedOrg" name="parentId" id="parentId" #parentModel="ngModel" [placeholder]="'Ch?n t? ch?c'"></ng-select2> -->
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group">
+                                            <div class="col-md-6">
+                                                <select name="org" id="org" class="form-control input-sm"
+                                                    [(ngModel)]="ddlDoiTuongSelected">
+                                                    <option value="0">--Chọn đối tượng--</option>
+                                                    <option *ngFor="let item of ddlDoiTuong" value="{{ item.id }}">
+                                                        {{ item.name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select name="orgstate" id="orgstate" class="form-control input-sm"
+                                                    [(ngModel)]="ddlStateSelected">
+                                                    <option value="-1">--Chọn trạng thái--</option>
+                                                    <option *ngFor="let item of ddlState" value="{{ item.id }}">
+                                                        {{ item.name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--tỉnh huyện xã-->
+                                        <div class="row form-group">
+                                            <div class="col-md-4">
+                                                <select name="orgsTinh" id="orgsTinh" class="form-control input-sm"
+                                                    [(ngModel)]="ddlTinhSelected"
+                                                    (ngModelChange)="ChangeOrgTinh($event)">
+                                                    <option value="0">Tỉnh</option>
+                                                    <option *ngFor="let item of ddlTinh" [value]="item.ma_dvhc_t">
+                                                        {{item.ten_dvhc_t}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select name="orgsHuyen" id="orgsHuyen" class="form-control input-sm"
+                                                    [(ngModel)]="ddlHuyenSelected"
+                                                    (ngModelChange)="ChangeOrgHuyen($event)">
+                                                    <option value="0">Huyện</option>
+                                                    <option *ngFor="let item of ddlHuyen" value="{{item.ma_dvhc_h}}">
+                                                        {{item.ten_dvhc_h}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select name="orgsXa" id="orgsXa" class="form-control input-sm"
+                                                    [(ngModel)]="ddlXaSelected">
+                                                    <option value="0">Xã</option>
+                                                    <option *ngFor="let item of ddlXa" value="{{item.ma_dvhc_x}}">
+                                                        {{item.ten_dvhc_x}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--thời gian, loại sự kiện-->
+                                        <div class="row form-group">
+                                            <div class="col-md-4">
+                                                <!-- <input type="date" max="3000-01-01" placeholder="dd-mm-yyyy" class="form-control input-sm datepicker" name="from_date" [(ngModel)]="from_date" /> -->
+                                                <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                                                    [selDate]="selDate" required (change)="onChange($event)"
+                                                    (dateChanged)="onDateChanged($event)">
+                                                </my-date-picker>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <!-- <input type="date" max="3000-01-01" placeholder="dd-mm-yyyy" class="form-control input-sm datepicker" name="to_date" [(ngModel)]="to_date" /> -->
+                                                <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                                                    [selDate]="endselDate" required (change)="onChangeEndDay($event)"
+                                                    (dateChanged)="onDateChangedEndDay($event)">
+                                                </my-date-picker>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select name="ddlLoaiSuKien" id="ddlLoaiSuKien"
+                                                    class="form-control input-sm" [(ngModel)]="ddlLoaiSuKienSelected">
+                                                    <option value="0">Loại sự kiện</option>
+                                                    <option *ngFor="let item of ddlLoaiSuKien" value="{{item.id}}">
+                                                        {{item.tenSuKien}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-md-12 text-right">
+                                                <a href="javascript:;" class="btn btn-default" (click)="huyPAKN()">
+                                                    <i class="fas fa-trash"></i>Hủy
+                                                </a>
+                                                <a href="javascript:;" class="btn btn-primary bg-blue"
+                                                    (click)="getPAKN()">
+                                                    <i class="fas fa-search"></i>Tìm kiếm
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <div class="table-responsive" *ngIf="pakns.length>0">
+                                            <table class="table table-bordered  table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Tiêu đề</th>
+                                                        <th>Nội dung</th>
+                                                        <!-- <th>Kiến nghị</th> -->
+                                                        <!-- <th>Đối tượng</th> -->
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let item of pakns;let i=index">
+                                                        <td>{{i+1}}</td>
+                                                        <td class="max-fix">
+                                                            <a class="title-pakn" href="javascript:"
+                                                                (click)="zoomToMap(item.id)">
+                                                                {{item.title}}</a>
+                                                        </td>
+                                                        <td [innerHTML]="item.content"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer" (click)="closePopup($event)"></a>
+                <div id="popup-content">
+                    <p class="text-bold"> Chi tiết phản ánh kiến nghị</p>
+                    <ul class="detail-pakn-popup">
+                        <li>
+                            Tiêu đề:<span> {{popup_title}}</span>
+                        </li>
+                        <li>
+                            Tên tổ chức:<span> {{popup_tenToChuc}}</span>
+                        </li>
+                        <li>
+                            Tên đối tượng: <span>{{popup_tenDoiTuong}}</span>
+                        </li>
+                        <li>
+                            Nội dung: <span [innerHTML]="popup_NoiDung"></span>
+                        </li>
+                        <li *ngIf="imgs!=undefined && imgs.length>0">
+                            Hình ảnh:
+                            <ul class="pop-img">
+                                <ng-container *ngFor="let item of imgs">
+                                    <li>
+                                        <img src="{{createImgPath(item.url)}}" alt="">
+                                    </li>
+
+                                </ng-container>
+                            </ul>
+                        </li>
+                        <li *ngIf="videos!=undefined && videos.length>0">
+                            Video:
+                            <ul class="pop-img">
+                                <ng-container *ngFor="let item of videos">
+                                    <li>
+                                        <video controls>
+                                            <source src="{{createImgPath(item.url)}}" type="video/mp4">
+                                            <source src="{{createImgPath(item.url)}}" type="video/ogg">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </li>
+                                </ng-container>
+                            </ul>
+                        </li>
+                        <li *ngIf="files!=undefined && files.length>0">
+                            Files:
+                            <ng-container *ngFor="let item of files">
+                                <a href="{{createImgPath(item.url)}}" download>{{SplitFile(item.url)}}</a>
+                            </ng-container>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

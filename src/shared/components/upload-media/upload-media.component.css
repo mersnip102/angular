@@ -1,0 +1,29 @@
+.trash {
+    padding-left: 5px;
+}
+
+.box-upload {
+    width: 100px;
+    height: 100px;
+    border: 1px dashed #6DB746;
+    background: #fff;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    position: relative;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.box-upload video {
+    width: 100%;
+}
+
+.box-upload a {
+    position: absolute;
+    top: -11px;
+    right: -4px;
+    color: red;
+}

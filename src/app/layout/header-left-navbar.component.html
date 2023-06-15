@@ -1,0 +1,178 @@
+<ul class="navbar-nav">
+    <!--    <li class="nav-item">-->
+    <!--        <a class="nav-link" href="javascript:;" (click)="toggleSidebar()">-->
+    <!--            <i class="fas fa-bars"></i>-->
+    <!--        </a>-->
+    <!--    </li>-->
+    <li class="nav-item d-none d-sm-inline-block">
+        <a class="nav-link rounded text-white mr-3" [routerLink]="['home']">
+            {{ "Trang chủ" | localize }}
+        </a>
+    </li>
+
+    <li class="nav-item dropdown" dropdown>
+        <a class="nav-link rounded text-white mr-3 dropdown-toggle" role="button" dropdownToggle>
+            {{"Quản trị hệ thống" | localize}}
+        </a>
+        <div class="dropdown-menu" *dropdownMenu>
+            <a class="dropdown-item" [routerLink]="['org']">Quản lý đơn vị sử dụng</a>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item"><b>Quản lý người dùng riêng</b></div>
+            <a class="dropdown-item" [routerLink]="['org']">Quản lý nhóm người dùng</a>
+            <a class="dropdown-item" [routerLink]="['users']">Quản lý danh sách người dùng</a>
+            <a class="dropdown-item" [routerLink]="['roles']">Quản lý phân quyền</a>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item"><b>Quản lý nội dung nhắc việc</b></div>
+            <a class="dropdown-item" [routerLink]="['user-doituongs']">Cấu hình nhắc việc</a>
+            <a class="dropdown-item" [routerLink]="['user-doituong-duyet']">Cấu hình duyệt nhắc việc</a>
+            <a class="dropdown-item" [routerLink]="['user-doituong-xem']">Cấu hình xem nhắc việc</a>
+            <a class="dropdown-item" [routerLink]="['thongkenhacviec']">Thống kê nhắc việc</a>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item"><b>Quản lý dữ liệu dùng chung</b></div>
+            <a class="dropdown-item" [routerLink]="['map-openlayers']">Quản lý dữ liệu bản đồ</a>
+            <a class="dropdown-item" [routerLink]="['users']">Quản lý dữ liệu văn bản</a>
+            <a class="dropdown-item" [routerLink]="['users']">Quản lý dữ liệu dashboard</a>
+        </div>
+    </li>
+
+    <li class="nav-item dropdown" dropdown>
+        <a class="nav-link rounded text-white mr-3 dropdown-toggle" role="button" dropdownToggle>
+            {{"Danh mục" | localize}}
+        </a>
+        <div class="dropdown-menu" *dropdownMenu>
+            <a class="dropdown-item" [routerLink]="['org']">DM đối tượng</a>
+            <a class="dropdown-item" [routerLink]="['users']">DM đơn vị tính</a>
+        </div>
+    </li>
+
+    <li class="nav-item dropdown" dropdown>
+        <a class="nav-link rounded text-white mr-3 dropdown-toggle" role="button" dropdownToggle>
+            {{"Báo cáo dự án" | localize}}
+        </a>
+        <div class="dropdown-menu" style="width: 400px;" *dropdownMenu>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">1. Dự án 1: Giải quyết tình
+                trạng thiếu đất ở, nhà ở, đất sản xuất, nước sinh hoạt</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">2. Dự án 2: Quy hoạch, sắp xếp,
+                bố trí, ổn định dân cư ở những nơi cần thiết</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">3. Dự án 3: Phát triển sản xuất
+                nông, lâm nghiệp bền vững, phát huy tiềm năng, thế mạnh của các vùng miền để sản xuất hàng hóa theo
+                chuỗi giá trị</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">3.1 Tiểu dự án 1: Phát triển
+                kinh tế nông, lâm nghiệp bền vững gắn với bảo vệ rừng và nâng cao thu nhập cho người dân</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">3.2 Tiểu dự án 2: Hỗ trợ phát
+                triển sản xuất theo chuỗi giá trị, vùng trồng dược liệu quý, thúc đẩy khởi sự kinh doanh, khởi nghiệp và
+                thu hút đầu tư vùng đồng bào dân tộc thiểu số và miền núi</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">3.2.1 Nội dung số 01: Hỗ trợ
+                phát triển sản xuất theo chuỗi giá trị.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">3.2.2 Nội dung số 02: Đầu tư,
+                hỗ trợ phát triển vùng trồng dược liệu quý.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">3.2.3 Nội dung số 03: Thúc đẩy
+                khởi sự kinh doanh, khởi nghiệp và thu hút đầu tư vùng đồng bào dân tộc thiểu số và miền núi.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">4. Dự án 4: Đầu tư cơ sở hạ
+                tầng thiết yếu, phục vụ sản xuất, đời sống trong vùng đồng bào dân tộc thiểu số và miền núi và các đơn
+                vị sự nghiệp công lập của lĩnh vực dân tộc</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">4.1 Tiểu dự án 1: Đầu tư cơ sở
+                hạ tầng thiết yếu, phục vụ sản xuất, đời sống trong vùng đồng bào dân tộc thiểu số và miền núi</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">4.1.1 Nội dung số 01: Đầu tư cơ
+                sở hạ tầng thiết yếu vùng đồng bào dân tộc thiểu số và miền núi; ưu tiên đối với các xã đặc biệt khó
+                khăn, thôn đặc biệt khó khăn.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">4.1.2 Nội dung số 02: Đầu tư
+                xây dựng, cải tạo nâng cấp mạng lưới chợ vùng đồng bào dân tộc thiểu số và miền núi.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">4.2 Tiểu dự án 2: Đầu tư cơ sở
+                vật chất các đơn vị sự nghiệp công lập hoạt động trong lĩnh vực công tác dân tộc</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">5. Dự án 5: Phát triển giáo dục
+                đào tạo nâng cao chất lượng nguồn nhân lực</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">5.1 Tiểu dự án 1: Đổi mới hoạt
+                động, củng cố phát triển các trường phổ thông dân tộc nội trú, trường phổ thông dân tộc bán trú, trường
+                phổ thông có học sinh ở bán trú và xóa mù chữ cho người dân vùng đồng bào dân tộc thiểu số.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">5.2 Tiểu dự án 2: Bồi dưỡng
+                kiến thức dân tộc; đào tạo dự bị đại học, đại học và sau đại học đáp ứng nhu cầu nhân lực cho vùng đồng
+                bào dân tộc thiểu số và miền núi.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">5.3 Tiểu dự án 3: Dự án phát
+                triển giáo dục nghề nghiệp và giải quyết việc làm cho người lao động vùng dân tộc thiểu số và miền
+                núi.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">5.4 Tiểu dự án 4: Đào tạo nâng
+                cao năng lực cho cộng đồng và cán bộ triển khai Chương trình ở các cấp.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">6. Dự án 6: Bảo tồn, phát huy
+                giá trị văn hóa truyền thống tốt đẹp của các dân tộc thiểu số gắn với phát triển du lịch</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">7. Dự án 7: Chăm sóc sức khỏe
+                Nhân dân, nâng cao thể trạng, tầm vóc người dân tộc thiểu số; phòng chống suy dinh dưỡng trẻ em</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">8. Dự án 8: Thực hiện bình đẳng
+                giới và giải quyết những vấn đề cấp thiết đối với phụ nữ và trẻ em</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">9. Dự án 9: Đầu tư phát triển
+                nhóm dân tộc thiểu số rất ít người và nhóm dân tộc còn nhiều khó khăn</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">9.1 Tiểu dự án 1: Đầu tư phát
+                triển kinh tế - xã hội các dân tộc còn gặp nhiều khó khăn, dân tộc có khó khăn đặc thù</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">9.2 Tiểu dự án 2: Giảm thiểu
+                tình trạng tảo hôn và hôn nhân cận huyết thống trong vùng đồng bào dân tộc thiểu số và miền núi.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">10. Dự án 10: Truyền thông,
+                tuyên truyền, vận động trong vùng đồng bào dân tộc thiểu số và miền núi. Kiểm tra, giám sát đánh giá
+                việc tổ chức thực hiện Chương trình</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">10.1 Tiểu dự án 1: Biểu dương,
+                tôn vinh điển hình tiên tiến, phát huy vai trò của người có uy tín; phổ biến, giáo dục pháp luật, trợ
+                giúp pháp lý và tuyên truyền, vận động đồng bào; truyền thông phục vụ tổ chức triển khai thực hiện Đề án
+                tổng thể và Chương trình mục tiêu quốc gia phát triển kinh tế - xã hội vùng đồng bào dân tộc thiểu số và
+                miền núi giai đoạn 2021 - 2030.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">10.1.1 Nội dung số 01: Biểu
+                dương, tôn vinh điển hình tiên tiến, phát huy vai trò của người có uy tín.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">10.1.2 Nội dung số 02: Phổ
+                biến, giáo dục pháp luật và tuyên truyền, vận động đồng bào dân tộc thiểu số.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">10.1.3 Nội dung số 3: Tăng
+                cường, nâng cao khả năng tiếp cận và thụ hưởng hoạt động trợ giúp pháp lý chất lượng cho vùng đồng bào
+                dân tộc thiểu số và miền núi.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">10.2 Tiểu dự án 2: Ứng dụng
+                công nghệ thông tin hỗ trợ phát triển kinh tế - xã hội và đảm bảo an ninh trật tự vùng đồng bào dân tộc
+                thiểu số và miền núi.</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">10.3 Tiểu dự án 3: Kiểm tra,
+                giám sát, đánh giá, đào tạo, tập huấn tổ chức thực hiện Chương trình.</a>
+        </div>
+    </li>
+
+    <li class="nav-item dropdown" dropdown>
+        <a class="nav-link rounded text-white mr-3 dropdown-toggle" role="button" dropdownToggle>
+            {{"Báo cáo tổng hợp" | localize}}
+        </a>
+        <div class="dropdown-menu" style="width: 400px;" *dropdownMenu>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo tiếp nhận nguồn NSNN thực hiện chương trình</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo phân bổ vốn NSNN thực hiện chương trình</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo số lượng dự án đầu tư của chương trình</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo phân bổ vốn đầu tư trung hạn cho các dự án đầu tư</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo các dự án được giao vốn NSNN hằng năm</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo tiến độ thực hiện quản lý dự án đầu tư</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo khối lượng hoàn thành các dự án đầu tư</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo giá trị hoàn thành và giải ngân các dự án đầu tư</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo số lượng nhiệm vụ của chương trình đã giao vốn</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo giá trị hoàn thành và giải ngân các nhiệm vụ</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo số lượng dự án đã lập báo cáo quyết toán</a>
+            <a class="dropdown-item" style="white-space: normal;" [routerLink]="['org']">Báo cáo dự án đã được phê duyệt quyết toán</a>
+        </div>
+    </li>
+
+    <li class="nav-item dropdown" dropdown>
+        <a class="nav-link rounded text-white mr-3 dropdown-toggle" role="button" dropdownToggle>
+            {{"Báo cáo hình ảnh" | localize}}
+        </a>
+        <div class="dropdown-menu" *dropdownMenu>
+            <div class="dropdown-item"><b>Báo cáo bằng hình ảnh</b></div>
+            <a class="dropdown-item" [routerLink]="['pakns']">Lập báo cáo</a>
+            <a class="dropdown-item" [routerLink]="['duyetbaocaos']">Duyệt báo cáo</a>
+            <a class="dropdown-item" [routerLink]="['searchpakns']">Xem báo cáo</a>
+
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item"><b>Báo cáo số liệu</b></div>
+            <a class="dropdown-item" [routerLink]="['users']">Lập báo cáo</a>
+            <a class="dropdown-item" [routerLink]="['users']">Tổng hợp báo cáo</a>
+            <a class="dropdown-item" [routerLink]="['users']">In các báo cáo</a>
+
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item"><b>Báo cáo chỉ số</b></div>
+            <a class="dropdown-item" [routerLink]="['users']">Báo cáo chi tiết</a>
+            <a class="dropdown-item" [routerLink]="['users']">Thống kê chỉ số</a>
+
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item"><b>Thống kê báo cáo</b></div>
+            <a class="dropdown-item" [routerLink]="['image-report']">Thống kê số liệu</a>
+            <a class="dropdown-item" [routerLink]="['image-report']">Dashboard</a>
+        </div>
+    </li>
+</ul>

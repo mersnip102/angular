@@ -1,0 +1,13 @@
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 150px !important;
+}
+
+.map-container {
+    height: 500px;
+    display: block
+}
+
+.pakn-btn a,
+.pakn-btn button {
+    margin-right: 10px;
+}

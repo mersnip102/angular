@@ -1,0 +1,19 @@
+<div class="row" style="margin-bottom:15px;">
+    <div class="col-md-2">
+        <input type="file" #file placeholder="Choose file" accept="image/*" (change)="uploadFile(file.files)" style="display:none;" multiple>
+        <button type="button" class="btn btn-success" (click)="file.click()">Upload ảnh</button>
+    </div>
+    <div class="col-md-10">
+        <ng-container *ngIf="res !=null">
+            <ng-container *ngFor="let item of fileInfos;let i=index">
+                <div id="{{i}}" class="box-upload">
+                    <!-- Tên file: {{item.pathFile}} - Kích thước: {{item.fileSize}} -->
+                    <img src="{{createImgPath(item.pathFile)}}" />
+                    <a (click)="deleteFile(item)" href="javascript:void(0)"> <span class="trash"> <i  class="fa fa-times btn-danger-color red"></i></span></a>
+                </div>
+            </ng-container>
+
+        </ng-container>
+
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<form class="form-horizontal" autocomplete="off" #createUserModal="ngForm" (ngSubmit)="save()">
+    <abp-modal-header [title]="'Thêm mới' | localize" (onCloseClick)="bsModalRef.hide()"></abp-modal-header>
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="tieude">
+                {{ "Tiêu đề" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="tieude" id="tieude" required [(ngModel)]="nhacviec.tieuDe" #tieuDeModel="ngModel" #TieuDeEl />
+
+                <abp-validation-summary [control]="tieuDeModel" [controlEl]="TieuDeEl"></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="noidung">
+                {{ "Nội dung" | localize }}
+            </label>
+            <div class="col-md-9">
+                <!-- <input type="text" class="form-control" name="noidung" id="noidung" required maxlength="32" [(ngModel)]="nhacviec.noiDung" #noidungModel="ngModel" #noidungEl /> -->
+                <textarea class="form-control" name="noidung" id="noidung" required [(ngModel)]="nhacviec.noiDung" #NoiDungModel="ngModel" #NoiDungEl></textarea>
+                <!-- <ckeditor name="noidung" id="noidung" #NoiDungModel="ngModel" #NoiDungEl required debounce="500" [editor]="editor" [config]="config" [(ngModel)]="nhacviec.noiDung" [data]="data" [ngModelOptions]="{standalone: true}"></ckeditor> -->
+                <div *ngIf="NoiDungModel.invalid && NoiDungModel.touched" class="text-danger">
+                    Nội dung không được rỗng !
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label">
+                {{ "Tổ chức" | localize }}
+            </label>
+            <div class="col-md-9">
+                <ng-select2 [data]="tochucs" [options]="options" placeholder="--Tất cả--" name="tochuc" id="tochuc" width="100%" [(ngModel)]="orgSelected" (ngModelChange)="Changetochuc()">
+                </ng-select2>
+                <!-- <div class="text-danger titleDoiTuong" *ngIf="CheckTochuc">
+                    Chưa chọn tổ chức!
+                </div> -->
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label">
+                {{ "Nhóm người dùng" | localize }}
+            </label>
+            <div class="col-md-9">
+                <select name="lstnhomnguoidung" id="lstnhomnguoidung" class="form-control" [(ngModel)]="SelectedNhomNguoiDung" (ngModelChange)="Changenhomnguoidung()">
+                    <option value="0">--Chọn nhóm người dùng--</option>
+                    <option *ngFor="let item of lstnhomnguoidung" value="{{ item.id }}">
+                        {{ item.name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label">
+                {{ "Nhắc việc cho" | localize }}
+            </label>
+            <div class="col-md-9">
+                <ng-select2 [data]="users" [options]="options" placeholder="--Chọn người dùng--" name="user" id="user" width="100%" [(ngModel)]="userSelected">
+                </ng-select2>
+                <!-- <div class="text-danger titleDoiTuong" *ngIf="CheckUser">
+                    Chưa chọn người dùng!
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <abp-modal-footer [cancelDisabled]="saving" (onCancelClick)="bsModalRef.hide()"></abp-modal-footer>
+</form>

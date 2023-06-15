@@ -1,0 +1,17 @@
+<form class="form-horizontal" autocomplete="off" #createUserModal="ngForm" (ngSubmit)="save()">
+    <abp-modal-header [title]="'Thêm mới' | localize" (onCloseClick)="bsModalRef.hide()"></abp-modal-header>
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="tieude">
+        {{ "Tên chức danh" | localize }}
+      </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="tenchucdanh" id="tenchucdanh" required [(ngModel)]="chucdanh.tenChucDanh" #tieuDeModel="ngModel" #TieuDeEl />
+
+
+                <abp-validation-summary [control]="tieuDeModel" [controlEl]="TieuDeEl"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <abp-modal-footer [cancelDisabled]="saving" [saveDisabled]="!createUserModal.form.valid || saving" (onCancelClick)="bsModalRef.hide()"></abp-modal-footer>
+</form>

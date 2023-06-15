@@ -1,0 +1,29 @@
+<form class="form-horizontal" autocomplete="off" #createUserModal="ngForm" (ngSubmit)="save()">
+    <abp-modal-header [title]="'Thêm mới' | localize" (onCloseClick)="bsModalRef.hide()"></abp-modal-header>
+    <div class="modal-body">
+
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="code">
+            {{ "Key Configs" | localize }}
+          </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="keyConfig" id="keyConfig" required maxlength="32" [(ngModel)]="configs.keyConfig" #keyConfigModel="ngModel" #keyConfigEl />
+
+
+                <abp-validation-summary [control]="keyConfigModel" [controlEl]="keyConfigEl"></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="name">
+            {{ "Giá trị" | localize }}
+          </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="vauleConfig" id="vauleConfig" required maxlength="32" [(ngModel)]="configs.vauleConfig" #vauleConfigModel="ngModel" #vauleConfigEl />
+
+
+                <abp-validation-summary [control]="vauleConfigModel" [controlEl]="vauleConfigEl"></abp-validation-summary>
+            </div>
+        </div>
+    </div>
+    <abp-modal-footer [cancelDisabled]="saving" [saveDisabled]="!createUserModal.form.valid || saving" (onCancelClick)="bsModalRef.hide()"></abp-modal-footer>
+</form>

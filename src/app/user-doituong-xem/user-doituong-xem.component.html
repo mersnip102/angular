@@ -1,0 +1,107 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h1>{{ "Cấu hình xem nhắc việc người dùng" | localize }}</h1>
+            </div>
+
+        </div>
+    </div>
+</section>
+<div class="form-group">
+    <section class="content-header">
+        <div class="row">
+            <div class="col-md-6">
+                <label class="lable-ds">Danh sách người dùng xem</label>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <!-- <input type="text" [(ngModel)]="keyWord" (keypress)="getUser()" class="form-control" placeholder="Tìm kiếm..."> -->
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row titleDoiTuong">
+                                    <div class="col-md-1">
+                                        STT
+                                    </div>
+                                    <div class="col-md-4">
+                                        Tên đăng nhập
+                                    </div>
+                                    <div class="col-md-4">
+                                        Tên đầy đủ
+                                    </div>
+                                    <div class="col-md-3">
+                                        Điện thoại
+                                    </div>
+                                </div>
+                            </div>
+                            <ng-container *ngFor="let user of users;let i=index">
+                                <a href="javascript:" [style.color]="selected==i?'#007bff':'#000'" (click)="selected=i; callDoiTuong(user.id,i)">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            {{i+1}}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{user.userName}}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{user.fullName}}
+                                        </div>
+                                        <div class="col-md-3">
+                                            {{user.phoneNumber}}
+                                        </div>
+                                    </div>
+                                </a>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="lable-ds">Danh sách đối tượng</label>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="form-group">
+                                <div class="row titleDoiTuong">
+                                    <div class="col-md-1">STT</div>
+                                    <div class="col-md-11">Tên đối tượng</div>
+                                </div>
+                            </div>
+                            <ng-container *ngFor="let item of doituonginfoInput;let i=index">
+                                <div class="form-group doituong">
+                                    <div class="row">
+                                        <div class="col-md-1">{{i+1}}</div>
+                                        <div class="col-md-11"><input type="checkbox" name="isChecked" [(ngModel)]="item.isChecked" (change)="onChange(item)">{{item.name}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+<div class="form-group">
+    <section class="content-header">
+
+        <div class="row">
+
+            <div class="col-md-10"></div>
+            <div class="col-md-2 text-right">
+                <a href="javascript:;" class="btn btn-sm bg-blue" (click)="save()">
+                    <i class="fas fa-save"></i> {{ "Lưu" | localize }}
+                </a>
+            </div>
+
+        </div>
+    </section>
+</div>

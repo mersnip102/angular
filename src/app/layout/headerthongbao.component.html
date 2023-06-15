@@ -1,0 +1,53 @@
+<li class="nav-item dropdown nav-user-menu" dropdown>
+    <a href="javascript:;" class="nav-link" dropdownToggle (click)="IsReadedNotify()">
+        <i class="fa fa-bell badge-wrapper" aria-hidden="true"></i>
+        <span class='badge badge-secondary' *ngIf="thongbao.countIsNotReaded!=undefined && thongbao.countIsNotReaded!=0">{{thongbao.countIsNotReaded!=0?thongbao.countIsNotReaded:""}}</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" *dropdownMenu style="min-width: 500px;">
+        <div class="header" style="font-weight: bold; padding: 1%;">
+            Thông báo
+        </div>
+        <hr class="br">
+        <div class="thongbao" *ngIf="thongbao.thongBao==null">
+            Chưa có thông báo!
+        </div>
+        <div *ngIf="thongbao.thongBao!=null" style="padding: 3%;padding-top: 0;">
+            <ul class="title-thongbao">
+                <li *ngFor="let item of thongbao.thongBao; index as i;">{{i+1}}. {{item.tieuDe}} -
+                    <span [innerHtml]="item.noiDung"></span></li>
+            </ul>
+        </div>
+    </div>
+</li>
+<style>
+    .badge-wrapper {
+        position: relative;
+    }
+
+    .badge {
+        position: absolute;
+        top: 0;
+        right: -5px;
+        display: inline-block;
+        border-radius: 50%;
+        background-color: red;
+        width: 20px;
+        height: 20px;
+    }
+
+    .title-thongbao {
+        padding-left: 10px;
+        list-style: none;
+    }
+
+    .title-thongbao li {
+        padding-top: 10px;
+    }
+
+    .br {
+        margin: 0;
+    }
+    .thongbao{
+        padding-left: 6px;
+    }
+</style>

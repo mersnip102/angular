@@ -1,0 +1,12 @@
+<div class="container pt-3">
+    <div class="chart-content m-auto" style="max-width: 600px;">
+        <canvas baseChart class="chart"
+                [data]="barChartData"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [type]="barChartType">
+        </canvas>
+    </div>
+
+    <a routerLink="/app/reports/csdl13b">Xem dữ liệu</a>
+</div>

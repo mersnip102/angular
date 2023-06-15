@@ -1,0 +1,556 @@
+﻿<div>
+    <section class="content-header">
+        <div class="container-fluid">
+            <img src="/assets/img/home-banner.jpg" style="width: 100%"/>
+        </div>
+    </section>
+    <section class="content px-2">
+        <div class="container-fluid mt-3">
+            <table class="table table-borderless">
+                <thead class="bg-light">
+                <tr>
+                    <th class="text-center"></th>
+                    <th class="text-center">
+                        <div class="px-1 py-3 rounded text-white" style="background: #6EABD8">
+                            TOÀN QUỐC
+                        </div>
+                    </th>
+                    <th class="text-center">
+                        <div class="px-1 py-3 rounded text-white" style="background: #6EABD8">
+                            TRUNG ƯƠNG
+                        </div>
+                    </th>
+                    <th class="text-center">
+                        <div class="px-1 py-3 rounded text-white" style="background: #6EABD8">
+                            CẤP TỈNH
+                        </div>
+                    </th>
+                    <th class="text-center">
+                        <div class="px-1 py-3 rounded text-white" style="background: #6EABD8">
+                            CẤP HUYỆN
+                        </div>
+                    </th>
+                    <th class="text-center">
+                        <div class="px-1 py-3 rounded text-white" style="background: #6EABD8">
+                            CẤP XÃ
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <app-home-table-title-cell
+                                title="KẾ HOẠCH VỐN"
+                                image="assets/img/home-title-cell-1.png"
+                                textColor="#74D5CA"
+                        ></app-home-table-title-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Được giao: ' + this.csdl1Dashboard?.nationwideAssigned, 'Đã phân bổ: ' + this.csdl1Dashboard.nationwideAllotted, 'Tỷ lệ(%):']"
+                                [backgroundColor]="'#048389'"
+                                routePath="/app/reports/csdl1/00/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Được giao: ' + this.csdl1Dashboard?.centralAssigned, 'Đã phân bổ: ' + this.csdl1Dashboard.centralAllotted, 'Tỷ lệ(%):']"
+                                [backgroundColor]="'#0ea293'"
+                                routePath="/app/reports/csdl1/01/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Được giao: ' + this.csdl1Dashboard?.provinceAssigned, 'Đã phân bổ: ' + this.csdl1Dashboard.provinceAllotted, 'Tỷ lệ(%):']"
+                                [backgroundColor]="'#8bc34a'"
+                                routePath="/app/reports/csdl1/02/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Được giao: ' + this.csdl1Dashboard?.districtAssigned, 'Đã phân bổ: ' + this.csdl1Dashboard.districtAllotted, 'Tỷ lệ(%):']"
+                                [backgroundColor]="'#3691db'"
+                                routePath="/app/reports/csdl1/03/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Được giao: ' + this.csdl1Dashboard?.communeAssigned, 'Đã phân bổ: ' + this.csdl1Dashboard.communeAllotted, 'Tỷ lệ(%):']"
+                                [backgroundColor]="'#2658b8'"
+                                routePath="/app/reports/csdl1/04/chart"
+                        ></app-home-table-cell>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <app-home-table-title-cell
+                                title="DỰ ÁN ĐẦU TƯ"
+                                image="assets/img/home-title-cell-2.png"
+                                textColor="#74D5CA"
+                        ></app-home-table-title-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Duyệt chủ trương ĐT: ' + this.csdl2aDashboard.nationwideBrowser, 'Quyết định đầu tư: ' + this.csdl2aDashboard.nationwideDecided, 'Kinh phí đã giao: ' + this.csdl2aDashboard.nationwideExpense]"
+                                [backgroundColor]="'#048389'"
+                                routePath="/app/reports/csdl2a/00/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Duyệt chủ trương ĐT: ' + this.csdl2aDashboard.centralBrowser, 'Quyết định đầu tư: ' + this.csdl2aDashboard.centralDecided, 'Kinh phí đã giao: ' + this.csdl2aDashboard.centralExpense]"
+                                [backgroundColor]="'#0ea293'"
+                                routePath="/app/reports/csdl2a/01/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Duyệt chủ trương ĐT: ' + this.csdl2aDashboard.provinceBrowser, 'Quyết định đầu tư: ' + this.csdl2aDashboard.provinceDecided, 'Kinh phí đã giao: ' + this.csdl2aDashboard.provinceExpense]"
+                                [backgroundColor]="'#8bc34a'"
+                                routePath="/app/reports/csdl2a/02/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Duyệt chủ trương ĐT: ' + this.csdl2aDashboard.districtBrowser, 'Quyết định đầu tư: ' + this.csdl2aDashboard.districtDecided, 'Kinh phí đã giao: ' + this.csdl2aDashboard.districtExpense]"
+                                [backgroundColor]="'#3691db'"
+                                routePath="/app/reports/csdl2a/03/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Duyệt chủ trương ĐT: ' + this.csdl2aDashboard.communeBrowser, 'Quyết định đầu tư: ' + this.csdl2aDashboard.communeDecided, 'Kinh phí đã giao: ' + this.csdl2aDashboard.communeExpense]"
+                                [backgroundColor]="'#2658b8'"
+                                routePath="/app/reports/csdl2a/04/chart"
+                        ></app-home-table-cell>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <app-home-table-title-cell
+                                title="NHIỆM VỤ"
+                                image="assets/img/home-title-cell-3.png"
+                                textColor="#74D5CA"
+                        ></app-home-table-title-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                'Số nhiệm vụ đã giao KP: ' + this.csdl3aDashboard.nationwideAssignedMission,
+                                'Số nhiệm vụ đã duyệt DT: ' + this.csdl3aDashboard.nationwideApprovedMission,
+                                 'Tổng số kinh phí: ' + this.csdl3aDashboard.nationwideExpense
+                                 ]"
+                                [backgroundColor]="'#048389'"
+                                routePath="/app/reports/csdl3a/00/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                'Số nhiệm vụ đã giao KP: ' + this.csdl3aDashboard.centralAssignedMission,
+                                'Số nhiệm vụ đã duyệt DT: ' + this.csdl3aDashboard.centralApprovedMission,
+                                 'Tổng số kinh phí: ' + this.csdl3aDashboard.centralExpense
+                                 ]"
+                                [backgroundColor]="'#0ea293'"
+                                routePath="/app/reports/csdl3a/01/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                'Số nhiệm vụ đã giao KP: ' + this.csdl3aDashboard.provinceAssignedMission,
+                                'Số nhiệm vụ đã duyệt DT: ' + this.csdl3aDashboard.provinceApprovedMission,
+                                 'Tổng số kinh phí: ' + this.csdl3aDashboard.provinceExpense
+                                 ]"
+                                [backgroundColor]="'#8bc34a'"
+                                routePath="/app/reports/csdl3a/02/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                'Số nhiệm vụ đã giao KP: ' + this.csdl3aDashboard.districtAssignedMission,
+                                'Số nhiệm vụ đã duyệt DT: ' + this.csdl3aDashboard.districtApprovedMission,
+                                 'Tổng số kinh phí: ' + this.csdl3aDashboard.districtExpense
+                                 ]"
+                                [backgroundColor]="'#3691db'"
+                                routePath="/app/reports/csdl3a/03/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                'Số nhiệm vụ đã giao KP: ' + this.csdl3aDashboard.communeAssignedMission,
+                                'Số nhiệm vụ đã duyệt DT: ' + this.csdl3aDashboard.communeApprovedMission,
+                                 'Tổng số kinh phí: ' + this.csdl3aDashboard.communeExpense
+                                 ]"
+                                [backgroundColor]="'#2658b8'"
+                                routePath="/app/reports/csdl3a/04/chart"
+                        ></app-home-table-cell>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <app-home-table-title-cell
+                                title="GIẢI NGÂN VỐN ĐẦU TƯ"
+                                image="assets/img/home-title-cell-4.png"
+                                textColor="#74D5CA"
+                        ></app-home-table-title-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Tổng số dự án đã giao vốn: ' + this.csdl2bDashboard.nationwideAssignedProject,
+                                    'Tổng số vốn đã giao: ' + this.csdl2bDashboard.nationwideAssignedCapital,
+                                    'Tổng số dự án đã giải ngân: ' + this.csdl2bDashboard.nationwideDisbursedProject,
+                                    'Tổng số vốn đã giải ngân: ' + this.csdl2bDashboard.nationwideDisbursedCapital,
+                                ]"
+                                [backgroundColor]="'#048389'"
+                                routePath="/app/reports/csdl2b/00/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Tổng số dự án đã giao vốn: ' + this.csdl2bDashboard.centralAssignedProject,
+                                    'Tổng số vốn đã giao: ' + this.csdl2bDashboard.centralAssignedCapital,
+                                    'Tổng số dự án đã giải ngân: ' + this.csdl2bDashboard.centralDisbursedProject,
+                                    'Tổng số vốn đã giải ngân: ' + this.csdl2bDashboard.centralDisbursedCapital,
+                                ]"
+                                [backgroundColor]="'#0ea293'"
+                                routePath="/app/reports/csdl2b/01/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Tổng số dự án đã giao vốn: ' + this.csdl2bDashboard.provinceAssignedProject,
+                                    'Tổng số vốn đã giao: ' + this.csdl2bDashboard.provinceAssignedCapital,
+                                    'Tổng số dự án đã giải ngân: ' + this.csdl2bDashboard.provinceDisbursedProject,
+                                    'Tổng số vốn đã giải ngân: ' + this.csdl2bDashboard.provinceDisbursedCapital,
+                                ]"
+                                [backgroundColor]="'#8bc34a'"
+                                routePath="/app/reports/csdl2b/02/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Tổng số dự án đã giao vốn: ' + this.csdl2bDashboard.districtAssignedProject,
+                                    'Tổng số vốn đã giao: ' + this.csdl2bDashboard.districtAssignedCapital,
+                                    'Tổng số dự án đã giải ngân: ' + this.csdl2bDashboard.districtDisbursedProject,
+                                    'Tổng số vốn đã giải ngân: ' + this.csdl2bDashboard.districtDisbursedCapital,
+                                ]"
+                                [backgroundColor]="'#3691db'"
+                                routePath="/app/reports/csdl2b/03/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Tổng số dự án đã giao vốn: ' + this.csdl2bDashboard.communeAssignedProject,
+                                    'Tổng số vốn đã giao: ' + this.csdl2bDashboard.communeAssignedCapital,
+                                    'Tổng số dự án đã giải ngân: ' + this.csdl2bDashboard.communeDisbursedProject,
+                                    'Tổng số vốn đã giải ngân: ' + this.csdl2bDashboard.communeDisbursedCapital,
+                                ]"
+                                [backgroundColor]="'#2658b8'"
+                                routePath="/app/reports/csdl2b/04/chart"
+                        ></app-home-table-cell>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <app-home-table-title-cell
+                                title="GIẢI NGÂN KINH PHÍ SỰ NGHIỆP"
+                                image="assets/img/home-title-cell-5.png"
+                                textColor="#74D5CA"
+                        ></app-home-table-title-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Số vốn đã được giải ngân: ' + this.csdl3bDashboard.nationwideDisbursedCapital,
+                                    'Tổng số vốn được giao: ' + this.csdl3bDashboard.nationwideAssignedCapital,
+                                    'Tỷ lệ giải ngân: ' + 0
+                                ]"
+                                [backgroundColor]="'#048389'"
+                                routePath="/app/reports/csdl3b/00/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Số vốn đã được giải ngân: ' + this.csdl3bDashboard.centralDisbursedCapital,
+                                    'Tổng số vốn được giao: ' + this.csdl3bDashboard.centralAssignedCapital,
+                                    'Tỷ lệ giải ngân: ' + 0
+                                ]"
+                                [backgroundColor]="'#0ea293'"
+                                routePath="/app/reports/csdl3b/01/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Số vốn đã được giải ngân: ' + this.csdl3bDashboard.provinceDisbursedCapital,
+                                    'Tổng số vốn được giao: ' + this.csdl3bDashboard.provinceAssignedCapital,
+                                    'Tỷ lệ giải ngân: ' + 0
+                                ]"
+                                [backgroundColor]="'#8bc34a'"
+                                routePath="/app/reports/csdl3b/02/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Số vốn đã được giải ngân: ' + this.csdl3bDashboard.districtDisbursedCapital,
+                                    'Tổng số vốn được giao: ' + this.csdl3bDashboard.districtAssignedCapital,
+                                    'Tỷ lệ giải ngân: ' + 0
+                                ]"
+                                [backgroundColor]="'#3691db'"
+                                routePath="/app/reports/csdl3b/03/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Số vốn đã được giải ngân: ' + this.csdl3bDashboard.communeDisbursedCapital,
+                                    'Tổng số vốn được giao: ' + this.csdl3bDashboard.communeAssignedCapital,
+                                    'Tỷ lệ giải ngân: ' + 0
+                                ]"
+                                [backgroundColor]="'#2658b8'"
+                                routePath="/app/reports/csdl3b/04/chart"
+                        ></app-home-table-cell>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <app-home-table-title-cell
+                                title="QUYẾT TOÁN ĐỰ ÁN ĐẦU TƯ"
+                                image="assets/img/home-title-cell-6.png"
+                                textColor="#74D5CA"
+                        ></app-home-table-title-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Dự án đề nghị QT: ' + this.csdl4aDashboard.nationwidePendingProject,
+                                    'Giá trị đề nghị QT: ' + this.csdl4aDashboard.nationwidePendingAmount,
+                                    'Dự án đã được QT: ' + this.csdl4aDashboard.nationwideApprovedProject,
+                                    'Giá trị đã được QT: ' + this.csdl4aDashboard.nationwideApprovedAmount
+                                ]"
+                                [backgroundColor]="'#048389'"
+                                routePath="/app/reports/csdl4a/00/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Dự án đề nghị QT: ' + this.csdl4aDashboard.centralPendingProject,
+                                    'Giá trị đề nghị QT: ' + this.csdl4aDashboard.centralPendingAmount,
+                                    'Dự án đã được QT: ' + this.csdl4aDashboard.centralApprovedProject,
+                                    'Giá trị đã được QT: ' + this.csdl4aDashboard.centralApprovedAmount
+                                ]"
+                                [backgroundColor]="'#0ea293'"
+                                routePath="/app/reports/csdl4a/01/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Dự án đề nghị QT: ' + this.csdl4aDashboard.provincePendingProject,
+                                    'Giá trị đề nghị QT: ' + this.csdl4aDashboard.provincePendingAmount,
+                                    'Dự án đã được QT: ' + this.csdl4aDashboard.provinceApprovedProject,
+                                    'Giá trị đã được QT: ' + this.csdl4aDashboard.provinceApprovedAmount
+                                ]"
+                                [backgroundColor]="'#8bc34a'"
+                                routePath="/app/reports/csdl4a/02/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Dự án đề nghị QT: ' + this.csdl4aDashboard.districtPendingProject,
+                                    'Giá trị đề nghị QT: ' + this.csdl4aDashboard.districtPendingAmount,
+                                    'Dự án đã được QT: ' + this.csdl4aDashboard.districtApprovedProject,
+                                    'Giá trị đã được QT: ' + this.csdl4aDashboard.districtApprovedAmount
+                                ]"
+                                [backgroundColor]="'#3691db'"
+                                routePath="/app/reports/csdl4a/03/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Dự án đề nghị QT: ' + this.csdl4aDashboard.communePendingProject,
+                                    'Giá trị đề nghị QT: ' + this.csdl4aDashboard.communePendingAmount,
+                                    'Dự án đã được QT: ' + this.csdl4aDashboard.communeApprovedProject,
+                                    'Giá trị đã được QT: ' + this.csdl4aDashboard.communeApprovedAmount
+                                ]"
+                                [backgroundColor]="'#2658b8'"
+                                routePath="/app/reports/csdl4a/04/chart"
+                        ></app-home-table-cell>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <app-home-table-title-cell
+                                title="QUYẾT TOÁN KINH PHÍ SỰ NGHIỆP"
+                                image="assets/img/home-title-cell-7.png"
+                                textColor="#74D5CA"
+                        ></app-home-table-title-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Nhiệm vụ đề nghị QT: ' + this.csdl4bDashboard.nationwidePendingMission,
+                                    'Kinh phí đề nghị QT: ' + this.csdl4bDashboard.nationwidePendingExpense,
+                                    'Nhiệm vụ đã được QT: ' + this.csdl4bDashboard.nationwideApprovedMission,
+                                    'Kinh phí đã được QT: ' + this.csdl4bDashboard.nationwideApprovedExpense
+                                ]"
+                                [backgroundColor]="'#048389'"
+                                routePath="/app/reports/csdl4b/00/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Nhiệm vụ đề nghị QT: ' + this.csdl4bDashboard.centralPendingMission,
+                                    'Kinh phí đề nghị QT: ' + this.csdl4bDashboard.centralPendingExpense,
+                                    'Nhiệm vụ đã được QT: ' + this.csdl4bDashboard.centralApprovedMission,
+                                    'Kinh phí đã được QT: ' + this.csdl4bDashboard.centralApprovedExpense
+                                ]"
+                                [backgroundColor]="'#0ea293'"
+                                routePath="/app/reports/csdl4b/01/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Nhiệm vụ đề nghị QT: ' + this.csdl4bDashboard.provincePendingMission,
+                                    'Kinh phí đề nghị QT: ' + this.csdl4bDashboard.provincePendingExpense,
+                                    'Nhiệm vụ đã được QT: ' + this.csdl4bDashboard.provinceApprovedMission,
+                                    'Kinh phí đã được QT: ' + this.csdl4bDashboard.provinceApprovedExpense
+                                ]"
+                                [backgroundColor]="'#8bc34a'"
+                                routePath="/app/reports/csdl4b/02/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Nhiệm vụ đề nghị QT: ' + this.csdl4bDashboard.districtPendingMission,
+                                    'Kinh phí đề nghị QT: ' + this.csdl4bDashboard.districtPendingExpense,
+                                    'Nhiệm vụ đã được QT: ' + this.csdl4bDashboard.districtApprovedMission,
+                                    'Kinh phí đã được QT: ' + this.csdl4bDashboard.districtApprovedExpense
+                                ]"
+                                [backgroundColor]="'#3691db'"
+                                routePath="/app/reports/csdl4b/03/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="[
+                                    'Nhiệm vụ đề nghị QT: ' + this.csdl4bDashboard.communePendingMission,
+                                    'Kinh phí đề nghị QT: ' + this.csdl4bDashboard.communePendingExpense,
+                                    'Nhiệm vụ đã được QT: ' + this.csdl4bDashboard.communeApprovedMission,
+                                    'Kinh phí đã được QT: ' + this.csdl4bDashboard.communeApprovedExpense
+                                ]"
+                                [backgroundColor]="'#2658b8'"
+                                routePath="/app/reports/csdl4b/04/chart"
+                        ></app-home-table-cell>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <app-home-table-title-cell
+                                title="BÁO CÁO HÌNH ẢNH"
+                                image="assets/img/home-title-cell-8.png"
+                                textColor="#74D5CA"
+                        ></app-home-table-title-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Đơn vị báo cáo:', 'Đơn vị chưa báo cáo:', 'Tỷ lệ(%):']"
+                                [backgroundColor]="'#048389'"
+                                routePath="/app/reports/csdl1/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Đơn vị báo cáo:', 'Đơn vị chưa báo cáo:', 'Tỷ lệ(%):']"
+                                [backgroundColor]="'#0ea293'"
+                                routePath="/app/reports/csdl1/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Đơn vị báo cáo:', 'Đơn vị chưa báo cáo:', 'Tỷ lệ(%):']"
+                                [backgroundColor]="'#8bc34a'"
+                                routePath="/app/reports/csdl1/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Đơn vị báo cáo:', 'Đơn vị chưa báo cáo:', 'Tỷ lệ(%):']"
+                                [backgroundColor]="'#3691db'"
+                                routePath="/app/reports/csdl1/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Đơn vị báo cáo:', 'Đơn vị chưa báo cáo:', 'Tỷ lệ(%):']"
+                                [backgroundColor]="'#2658b8'"
+                                routePath="/app/reports/csdl1/chart"
+                        ></app-home-table-cell>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <app-home-table-title-cell
+                                title="CHẤP HÀNH CHẾ ĐỘ BÁO CÁO"
+                                image="assets/img/home-title-cell-9.png"
+                                textColor="#74D5CA"
+                        ></app-home-table-title-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Đơn vị phải báo cáo:', 'Đơn vị đã báo cáo:', 'Tỷ lệ($):']"
+                                [backgroundColor]="'#048389'"
+                                routePath="/app/reports/csdl1/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Đơn vị phải báo cáo:', 'Đơn vị đã báo cáo:', 'Tỷ lệ($):']"
+                                [backgroundColor]="'#0ea293'"
+                                routePath="/app/reports/csdl1/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Đơn vị phải báo cáo:', 'Đơn vị đã báo cáo:', 'Tỷ lệ($):']"
+                                [backgroundColor]="'#8bc34a'"
+                                routePath="/app/reports/csdl1/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Đơn vị phải báo cáo:', 'Đơn vị đã báo cáo:', 'Tỷ lệ($):']"
+                                [backgroundColor]="'#3691db'"
+                                routePath="/app/reports/csdl1/chart"
+                        ></app-home-table-cell>
+                    </td>
+                    <td>
+                        <app-home-table-cell
+                                [texts]="['Đơn vị phải báo cáo:', 'Đơn vị đã báo cáo:', 'Tỷ lệ($):']"
+                                [backgroundColor]="'#2658b8'"
+                                routePath="/app/reports/csdl1/chart"
+                        ></app-home-table-cell>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

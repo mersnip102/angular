@@ -1,0 +1,9 @@
+<a [routerLink]="routePath">
+    <div class="p-2 rounded" [ngStyle]="{background: backgroundColor}">
+        <div class="inner">
+            <div class="text-white" *ngFor="let text of texts">
+                {{text}}
+            </div>
+        </div>
+    </div>
+</a>

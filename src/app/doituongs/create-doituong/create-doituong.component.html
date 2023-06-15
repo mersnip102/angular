@@ -1,0 +1,106 @@
+<form class="form-horizontal" autocomplete="off" #createUserModal="ngForm" (ngSubmit)="save()">
+    <abp-modal-header [title]="'Thêm mới' | localize" (onCloseClick)="bsModalRef.hide()"></abp-modal-header>
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="code">
+                {{ "Mã số" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="code" id="code" required [(ngModel)]="doituong.code" #codeModel="ngModel" #codeEl />
+
+                <abp-validation-summary [control]="codeModel" [controlEl]="codeEl"></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="name">
+                {{ "Tên đối tượng" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="name" id="name" required [(ngModel)]="doituong.name" #nameModel="ngModel" #nameEl />
+
+                <abp-validation-summary [control]="nameModel" [controlEl]="nameEl"></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label">
+                {{ "Loại đối tượng" | localize }}
+            </label>
+            <div class="col-md-9">
+                <select name="loaidoituong" id="loaidoituong" class="form-control" [(ngModel)]="loaidoituongSelect">
+                    <option value="0">--Chọn loại đối tượng--</option>
+                    <option *ngFor="let item of loaidoituong" value="{{ item.id }}">
+                        {{ item.tenLoaiDoiTuong }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="address">
+                {{ "Address" | localize }}
+            </label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="address" id="address" [(ngModel)]="doituong.address" #addressModel="ngModel" #addressEl />
+
+                <abp-validation-summary [control]="addressModel" [controlEl]="addressEl"></abp-validation-summary>
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label">
+                {{ "Tổ chức" | localize }}
+            </label>
+            <div class="col-md-9">
+                <select name="tochuc" id="tochuc" class="form-control" [(ngModel)]="tochucSelect" (ngModelChange)="Changetochuc($event)">
+                    <option value="0">--Chọn tổ chức--</option>
+                    <option *ngFor="let item of tochuc" value="{{ item.id }}">
+                        {{ item.text }}
+                    </option>
+                </select>
+                <div class="text-danger" *ngIf="isOrgSelect">
+                    Tổ chức không được rỗng !
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="nguoiDaiDien">
+                {{ "Người đại diện" | localize }}
+            </label>
+            <div class="col-md-9">
+                <ng-select2 [data]="data_user" [options]="options" placeholder="--Chọn người dùng--" name="user" id="user" width="100%" [(ngModel)]="userSelect">
+                </ng-select2>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label">
+                {{ "Nhiệm vụ" | localize }}
+            </label>
+            <div class="col-md-9">
+                <select class="form-control" name="nhiemvu" id="nhiemvu" [(ngModel)]="nhiemvuSelect">
+                    <option value="0">--Chọn nhiệm vụ--</option>
+                    <option *ngFor="let item of nhiemvu" value="{{ item.id }}">
+                        {{ item.tenNhiemVu }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label">
+                Ngày bắt đầu
+            </label>
+            <div class="col-md-3">
+                <!-- <input class="form-control" max="3000-01-01" [valueAsDate]="ngayBatDau" (change)="updateDateNgayBatDau($event)" type="date" id="ngayBatDau" /> -->
+                <my-date-picker name="mydate" [options]="myDatePickerOptions" [selDate]="selDate" required (change)="onChange($event)" (dateChanged)="onDateChanged($event)">
+                </my-date-picker>
+            </div>
+            <label class="col-md-3 col-form-label">
+                Ngày kết thúc
+            </label>
+            <div class="col-md-3">
+                <!-- <input class="form-control" max="3000-01-01" [valueAsDate]="ngayKetThuc" (change)="updateDateNgayKetThuc($event)" type="date" id="ngayKetThuc" /> -->
+                <my-date-picker name="mydate" [options]="myDatePickerOptions" [selDate]="endselDate" required (change)="onChangeEndDay($event)" (dateChanged)="onDateChangedEndDay($event)">
+                </my-date-picker>
+            </div>
+        </div>
+    </div>
+
+    <abp-modal-footer [cancelDisabled]="saving" [saveDisabled]="!createUserModal.form.valid || saving" (onCancelClick)="bsModalRef.hide()"></abp-modal-footer>
+</form>

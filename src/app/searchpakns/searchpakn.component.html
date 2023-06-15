@@ -1,0 +1,168 @@
+<div [@routerTransition]>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <h1>{{ "Tra cứu báo cáo" | localize }}</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content px-2">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group app-speech-input" [class.app-speech-input-listening]="listening">
+                                <div class="input-group-prepend">
+
+                                </div>
+                                <input type="text" class="app-speech-input-form-control form-control" name="keyword" [placeholder]="'SearchWithThreeDot' | localize" [(ngModel)]="keyword" [value]="messages" />
+                                <button class="app-speech-input-btn" [disabled]="listening" (click)="listen()"></button>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="org" id="org" class="form-control input-sm" [(ngModel)]="ddlToChucSelected" (ngModelChange)="ChangeOrgToChuc($event)">
+                                <option value="0">--Chọn tổ chức--</option>
+                                <option *ngFor="let item of ddlToChuc" value="{{ item.id }}">
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="org" id="org" class="form-control input-sm" [(ngModel)]="ddlDoiTuongSelected">
+                                <option value="0">--Chọn đối tượng--</option>
+                                <option *ngFor="let item of ddlDoiTuong" value="{{ item.id }}">
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="orgstate" id="orgstate" class="form-control input-sm" [(ngModel)]="ddlStateSelected">
+                                <option value="-1">--Chọn trạng thái--</option>
+                                <option *ngFor="let item of ddlState" value="{{ item.id }}">
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="ddlLoaiSuKien" id="ddlLoaiSuKien" class="form-control input-sm" [(ngModel)]="ddlLoaiSuKienSelected">
+                                <option value="0">--Loại sự kiện--</option>
+                                <option *ngFor="let item of ddlLoaiSuKien" value="{{item.id}}">{{item.tenSuKien}}
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row" style="padding: 5px;"></div>
+                    <!--tỉnh huyện xã-->
+                    <div class="row">
+                        <div class="col-md-2">
+                            <!-- <input type="date" max="3000-01-01" placeholder="Từ ngày" id="from_date" class="form-control input-sm datepicker" name="from_date" [(ngModel)]="from_date" /> -->
+                            <my-date-picker name="mydate" [options]="myDatePickerOptions" [selDate]="selDate" required (change)="onChange($event)" (dateChanged)="onDateChanged($event)">
+                            </my-date-picker>
+                        </div>
+                        <div class="col-md-2">
+                            <!-- <input type="date" max="3000-01-01" placeholder="Đến ngày" id="to_date" class="form-control input-sm datepicker" name="to_date" [(ngModel)]="to_date" /> -->
+                            <my-date-picker name="mydate" [options]="myDatePickerOptions" [selDate]="endselDate" required (change)="onChangeEndDay($event)" (dateChanged)="onDateChangedEndDay($event)">
+                            </my-date-picker>
+                        </div>
+
+                        <div class="col-md-2">
+                            <select name="orgsTinh" id="orgsTinh" class="form-control input-sm" [(ngModel)]="ddlTinhSelected" (ngModelChange)="ChangeOrgTinh($event)">
+                                <option value="0">--Tỉnh--</option>
+                                <option *ngFor="let item of ddlTinh" [value]="item.ma_dvhc_t">{{item.ten_dvhc_t}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="orgsHuyen" id="orgsHuyen" class="form-control input-sm" [(ngModel)]="ddlHuyenSelected" (ngModelChange)="ChangeOrgHuyen($event)">
+                                <option value="0">--Huyện--</option>
+                                <option *ngFor="let item of ddlHuyen" value="{{item.ma_dvhc_h}}">{{item.ten_dvhc_h}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="orgsXa" id="orgsXa" class="form-control input-sm" [(ngModel)]="ddlXaSelected">
+                                <option value="0">--Xã--</option>
+                                <option *ngFor="let item of ddlXa" value="{{item.ma_dvhc_x}}">{{item.ten_dvhc_x}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <a href="javascript:;" class="btn btn-primary bg-blue" (click)="getPAKN()">
+                                <i class="fas fa-search"></i> {{ "Tìm kiếm" | localize }}
+                            </a>
+                            <a href="javascript:;" class="btn btn-light bg-gray" (click)="huyPAKN()">
+                                <i class="fas fa-trash"></i> {{ "Hủy" | localize }}
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" [busy]="isTableLoading">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th style="width: 2%;">{{"STT"|localize}}</th>
+                                    <th>{{ "Tiêu đề"|localize }}</th>
+                                    <th>{{ "Nội dung"|localize }}</th>
+                                    <th>{{"Tỉnh"|localize}}</th>
+                                    <th>{{"Huyện"|localize}}</th>
+                                    <th>{{"Xã"|localize}}</th>
+                                    <th>{{"Đối tượng"|localize}}</th>
+                                    <th>{{"Tổ chức quản lý đối tượng"|localize}}</th>
+                                    <th>{{"Trạng thái"|localize}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="
+                    let search of pakns
+                      | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: pageSize,
+                            currentPage: pageNumber,
+                            totalItems: totalItems
+                          }
+                          ;let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td class="max-fix"><a routerLink="/app/xembaocao/{{ search.id }}" [queryParams]="{burl: 'searchpakns'}">{{search.title }}</a> </td>
+                                    <td class="max-fix" [innerHTML]="search.content"></td>
+                                    <td class="max-fix">{{search.ten_dvhc_t }}</td>
+                                    <td class="max-fix">{{search.ten_dvhc_h }}</td>
+                                    <td class="max-fix">{{search.ten_dvhc_x }}</td>
+                                    <td class="max-fix">{{search.tenDoiTuong }}</td>
+                                    <td class="max-fix">{{search.tenToChucQLDoiTuong }}</td>
+                                    <td>{{search.stateName }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer table-card-footer bg-light border-top">
+                    <div class="row">
+                        <div class="col-sm-4 col-12 text-sm-left text-center">
+                            <button class="btn btn-sm btn-secondary" (click)="refresh()">
+                                <i class="fas fa-redo-alt"></i>
+                            </button>
+                        </div>
+                        <div class="col-sm-4 col-12 text-center">
+                            <p class="mb-0 my-2">
+                                <!-- {{ "TotalRecordsCount" | localize: totalItems }} -->
+                            </p>
+                        </div>
+                        <div class="col-sm-4 col-12">
+                            <div class="float-sm-right m-auto">
+                                <abp-pagination-controls id="server" (pageChange)="getDataPage($event)">
+                                </abp-pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
